@@ -1,0 +1,40 @@
+.hero {
+  padding: 96px 0 70px;
+  max-width: 1000px;
+}
+
+.eyebrow {
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--strat-t);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(56px, 8.5vw, 128px);
+  line-height: 0.9;
+  letter-spacing: -0.025em;
+  margin-top: 22px;
+}
+
+.gradient {
+  background: linear-gradient(100deg, var(--strat), var(--exec));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tagline {
+  font-size: clamp(19px, 2.3vw, 27px);
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 760px;
+  margin-top: 34px;
+}
+
+.tagline strong {
+  color: var(--text);
+  font-weight: 500;
+}

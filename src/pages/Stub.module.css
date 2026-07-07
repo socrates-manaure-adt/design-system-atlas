@@ -1,0 +1,33 @@
+.wrap {
+  padding: 80px 0;
+}
+
+.back {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+
+.back:hover {
+  color: var(--text);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-top: 32px;
+}
+
+.note {
+  margin-top: 24px;
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.6;
+}
