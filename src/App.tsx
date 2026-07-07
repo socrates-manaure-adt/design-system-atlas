@@ -7,7 +7,7 @@ import { Install } from './pages/Install'
 import { Usage } from './pages/Usage'
 import { Storybook as StorybookPage } from './pages/Storybook'
 import { Tokens } from './pages/Tokens'
-import { Stub } from './pages/Stub'
+import { Rules } from './pages/Rules'
 import styles from './App.module.css'
 
 function AppShell() {
@@ -21,7 +21,7 @@ function AppShell() {
         <Route path="/usage" element={<Usage />} />
         <Route path="/storybook" element={<StorybookPage />} />
         <Route path="/tokens" element={<Tokens />} />
-        <Route path="/rules" element={<Stub title="Design Rules" />} />
+        <Route path="/rules" element={<Rules />} />
       </Routes>
     </div>
   )

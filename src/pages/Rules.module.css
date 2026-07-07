@@ -1,0 +1,262 @@
+.page {
+  padding: 48px 0 80px;
+}
+
+.back {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+
+.back:hover { color: var(--text); }
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-top: 32px;
+  margin-bottom: 10px;
+}
+
+.lead {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 660px;
+  margin-bottom: 48px;
+}
+
+/* ── Part headings ── */
+
+.partHeading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-top: 72px;
+  margin-bottom: 8px;
+}
+
+.partDesc {
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 36px;
+}
+
+/* ── Rule cards ── */
+
+.ruleList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ruleCard {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  overflow: hidden;
+}
+
+.ruleCardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ruleNumber {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--strat-t);
+  background: rgba(91, 141, 239, 0.10);
+  border: 1px solid rgba(91, 141, 239, 0.22);
+  border-radius: 6px;
+  padding: 4px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ruleStatement {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.ruleBody {
+  padding: 20px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ruleRationale {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  border-left: 2px solid var(--line);
+  padding-left: 12px;
+  margin-top: 4px;
+}
+
+/* ── Do / Don't labels ── */
+
+.codeLabel {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.doLabel { color: #3cc279; }
+.dontLabel { color: #e05a5a; }
+
+.dontCode {
+  border-left: 3px solid #e05a5a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ── Substitution table ── */
+
+.subTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 4px 0 8px;
+}
+
+.subTable thead th {
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 16px 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-weight: 500;
+}
+
+.subTable tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.subTable tbody tr:last-child { border-bottom: none; }
+
+.subTable tbody td {
+  padding: 10px 16px 10px 0;
+  vertical-align: middle;
+  color: var(--muted);
+}
+
+.subTable tbody td:first-child { color: var(--text); }
+
+.subTable code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--strat-t);
+  background: rgba(91, 141, 239, 0.08);
+  border: 1px solid rgba(91, 141, 239, 0.18);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+/* ── Pattern sections ── */
+
+.patternList {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.patternSection {
+  border-top: 1px solid var(--line);
+  padding-top: 40px;
+}
+
+.patternTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.patternDesc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 680px;
+  margin-bottom: 24px;
+}
+
+.patternExamples {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* sizing table */
+
+.sizeTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 20px;
+  max-width: 520px;
+}
+
+.sizeTable thead th {
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 16px 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-weight: 500;
+}
+
+.sizeTable tbody td {
+  padding: 10px 16px 10px 0;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.sizeTable tbody td:first-child { color: var(--text); }
+
+.sizeTable code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--strat-t);
+  background: rgba(91, 141, 239, 0.08);
+  border: 1px solid rgba(91, 141, 239, 0.18);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+.toastRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 680px) {
+  .ruleCardHeader { flex-direction: column; gap: 10px; }
+  .ruleBody { padding: 16px 20px 20px; }
+  .ruleCardHeader { padding: 20px 20px 16px; }
+}
