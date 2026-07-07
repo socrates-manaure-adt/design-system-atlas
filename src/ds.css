@@ -1,11 +1,18 @@
-/* Wire dark: utilities to <html class="dark"> instead of OS prefers-color-scheme.
-   Re-declared here so atlas's Tailwind instance sees it unambiguously; the DS
-   canonical entrypoint also declares it, but belt-and-suspenders is correct here. */
+/* Tailwind v4 CSS-first setup.
+   Import DS style files individually via the ./styles/* package export so that
+   DS fonts.css (which references the licensed PPMonumentExtended woff2 files) is
+   excluded from Vite's processing pipeline — eliminating the build-time resolution
+   warnings without committing binary font stubs. */
+
+/* Wire dark: utilities to <html class="dark"> instead of OS prefers-color-scheme. */
 @custom-variant dark (&:is(.dark *));
 
-/* DS canonical entrypoint via package export — includes tailwindcss, Inter font,
-   tokens (light + dark), @custom-variant dark, and utility classes. */
-@import '@avantodev/strata-design-system/styles.css';
+@import 'tailwindcss';
+
+@import '@avantodev/strata-design-system/styles/tokens/variables.css';
+@import '@avantodev/strata-design-system/styles/tokens/variables-dark.css';
+@import '@avantodev/strata-design-system/styles/tokens/theme-v4.css';
+@import '@avantodev/strata-design-system/styles/utilities.css';
 
 /* Atlas source scan — Tailwind emits utilities for atlas app code and DS bundle. */
 @source '../src/**/*.{ts,tsx}';
