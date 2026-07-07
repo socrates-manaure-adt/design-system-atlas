@@ -5,14 +5,6 @@ import {
   Badge,
   Heading,
   Text,
-  Field,
-  FieldLabel,
-  FieldDescription,
-  Input,
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -26,24 +18,35 @@ const SB_ROOT = 'https://avantodev.github.io/front-react-strata-storybook'
 
 /* ─── code snippets ──────────────────────────────────────────────── */
 
-const FORMS_CODE = `<Field>
-  <FieldLabel>Email address</FieldLabel>
-  <Input type="email" placeholder="you@example.com" />
-  <FieldDescription>We'll never share your email.</FieldDescription>
-</Field>`
+const FOUNDATIONS_CODE = `<Heading level={2}>Section heading</Heading>
+<Heading level={3}>Subsection heading</Heading>
+<Heading level={4}>Card heading</Heading>
+<Text>Body copy — consistent spacing across all Strata surfaces.</Text>`
 
-const LAYOUT_CODE = `<Tabs defaultValue="overview">
-  <TabsList>
-    <TabsTrigger value="overview">Overview</TabsTrigger>
-    <TabsTrigger value="details">Details</TabsTrigger>
-  </TabsList>
-  <TabsContent value="overview">
-    Overview content here.
-  </TabsContent>
-  <TabsContent value="details">
-    Details content here.
-  </TabsContent>
-</Tabs>`
+const APP_UI_CODE = `<Button>default</Button>
+<Button variant="destructive">destructive</Button>
+<Button variant="outline">outline</Button>
+<Button variant="secondary">secondary</Button>
+<Button variant="ghost">ghost</Button>
+<Button variant="link">link</Button>
+<Button variant="brand">brand</Button>
+<Button variant="accent">accent</Button>`
+
+const BTN_VARIANTS = [
+  'default', 'destructive', 'outline', 'secondary', 'ghost', 'link', 'brand', 'accent',
+] as const
+
+const DATA_VIZ_CODE = `import { BarChart, LineChart } from '@avantodev/strata-design-system'
+
+<BarChart
+  data={[
+    { label: 'Jan', value: 420 },
+    { label: 'Feb', value: 380 },
+    { label: 'Mar', value: 510 },
+  ]}
+  xKey="label"
+  yKey="value"
+/>`
 
 const OVERLAYS_CODE = `<TooltipProvider>
   <Tooltip>
@@ -51,30 +54,32 @@ const OVERLAYS_CODE = `<TooltipProvider>
       <Button variant="outline">Hover me</Button>
     </TooltipTrigger>
     <TooltipContent>
-      <p>Save your changes</p>
+      <p>Helpful context here</p>
     </TooltipContent>
   </Tooltip>
 </TooltipProvider>`
 
-const STATUS_CODE = `<Badge variant="solid" color="green">Active</Badge>`
+const BADGE_EXAMPLES = [
+  { variant: 'solid' as const, color: 'green' as const, label: 'Active' },
+  { variant: 'soft' as const, color: 'amber' as const, label: 'Pending' },
+  { variant: 'solid' as const, color: 'red' as const, label: 'Rejected' },
+  { variant: 'outline' as const, color: 'zinc' as const, label: 'Draft' },
+] as const
 
-const BUTTONS_CODE = `<Button variant="outline">Learn more</Button>`
-
-const TYPOGRAPHY_CODE = `<Heading level={2}>Design System Atlas</Heading>
-<Text>
-  Components built for consistency across Strata products.
-</Text>`
+const STRATA_CODE = `<Badge variant="solid" color="green">Active</Badge>
+<Badge variant="soft" color="amber">Pending</Badge>
+<Badge variant="solid" color="red">Rejected</Badge>
+<Badge variant="outline" color="zinc">Draft</Badge>`
 
 /* ─── CategoryBlock ──────────────────────────────────────────────── */
 
 interface CategoryBlockProps {
   title: string
   description: string
-  components: string[]
-  showcase: { code: string; children: ReactNode }
+  showcases: Array<{ code: string; children: ReactNode }>
 }
 
-function CategoryBlock({ title, description, components, showcase }: CategoryBlockProps) {
+function CategoryBlock({ title, description, showcases }: CategoryBlockProps) {
   return (
     <section className={styles.category}>
       <div className={styles.categoryHeader}>
@@ -89,13 +94,14 @@ function CategoryBlock({ title, description, components, showcase }: CategoryBlo
         </a>
       </div>
       <p className={styles.categoryDesc}>{description}</p>
-      <ul className={styles.componentList}>
-        {components.map(c => <li key={c}>{c}</li>)}
-      </ul>
       <ComponentErrorBoundary name={title}>
-        <ShowcaseBlock code={showcase.code}>
-          {showcase.children}
-        </ShowcaseBlock>
+        {showcases.map((s, i) => (
+          <div key={i} style={i > 0 ? { marginTop: '16px' } : undefined}>
+            <ShowcaseBlock code={s.code}>
+              {s.children}
+            </ShowcaseBlock>
+          </div>
+        ))}
       </ComponentErrorBoundary>
     </section>
   )
@@ -128,54 +134,58 @@ export function Storybook() {
         </a>
       </div>
 
-      {/* Category map */}
+      {/* Section map */}
       <div className={`${styles.categoryMap} reveal d3`}>
-        <div className={styles.mapLabel}>Category map</div>
+        <div className={styles.mapLabel}>Sections</div>
 
         <CategoryBlock
-          title="Forms"
-          description="Input controls for collecting user data — text fields, selects, date pickers, and the Field wrapper that coordinates label, input, and error together."
-          components={['Field', 'FieldLabel', 'FieldDescription', 'FieldError', 'Input', 'Textarea', 'Select', 'DatePicker', 'Checkbox', 'Switch']}
-          showcase={{
-            code: FORMS_CODE,
+          title="Foundations"
+          description="The base layer that every other section builds on — color tokens, typography scale, spacing primitives, and the icon set. Start here to understand the visual language before diving into components."
+          showcases={[{
+            code: FOUNDATIONS_CODE,
             children: (
-              <Field style={{ width: '100%', maxWidth: '320px' }}>
-                <FieldLabel>Email address</FieldLabel>
-                <Input type="email" placeholder="you@example.com" />
-                <FieldDescription>We'll never share your email.</FieldDescription>
-              </Field>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <Heading level={2}>Section heading</Heading>
+                <Heading level={3}>Subsection heading</Heading>
+                <Heading level={4}>Card heading</Heading>
+                <Text>Body copy — consistent spacing across all Strata surfaces.</Text>
+              </div>
             ),
-          }}
+          }]}
         />
 
         <CategoryBlock
-          title="Layout"
-          description="Page structure primitives — navigation shells, breadcrumbs, and Tabs for organising content into switchable panels."
-          components={['PageLayout', 'PageHeader', 'Breadcrumb', 'Tabs', 'TabsList', 'TabsTrigger', 'TabsContent', 'Separator', 'ScrollArea']}
-          showcase={{
-            code: LAYOUT_CODE,
+          title="Application UI"
+          description="General-purpose building blocks for product screens — buttons, form inputs, badges, tables, and navigation components. These are the components you reach for first when building any Strata feature."
+          showcases={[{
+            code: APP_UI_CODE,
             children: (
-              <Tabs defaultValue="overview" style={{ width: '100%', maxWidth: '340px' }}>
-                <TabsList>
-                  <TabsTrigger value="overview">Overview</TabsTrigger>
-                  <TabsTrigger value="details">Details</TabsTrigger>
-                </TabsList>
-                <TabsContent value="overview" style={{ paddingTop: '12px', fontSize: '14px', color: 'var(--muted)' }}>
-                  Overview content here.
-                </TabsContent>
-                <TabsContent value="details" style={{ paddingTop: '12px', fontSize: '14px', color: 'var(--muted)' }}>
-                  Details content here.
-                </TabsContent>
-              </Tabs>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', alignItems: 'center' }}>
+                {BTN_VARIANTS.map(v => (
+                  <Button key={v} variant={v}>{v}</Button>
+                ))}
+              </div>
             ),
-          }}
+          }]}
+        />
+
+        <CategoryBlock
+          title="Data Visualization"
+          description="Charts, graphs, and data-heavy display components for presenting metrics and analytics. These components accept structured data arrays and handle layout, axes, and tooltips internally."
+          showcases={[{
+            code: DATA_VIZ_CODE,
+            children: (
+              <p style={{ fontSize: '14px', color: 'var(--muted)', fontStyle: 'italic' }}>
+                Chart components require a data source — see live examples in Storybook.
+              </p>
+            ),
+          }]}
         />
 
         <CategoryBlock
           title="Overlays"
-          description="Components that float above page content — tooltips for inline hints, dialogs for blocking interactions, and drawers for side panels."
-          components={['Tooltip', 'TooltipProvider', 'Dialog', 'DialogContent', 'DialogHeader', 'Drawer', 'Popover', 'Sheet', 'HoverCard']}
-          showcase={{
+          description="Components that float above page content to deliver contextual information or capture user decisions — tooltips for inline hints, dialogs for blocking actions, and drawers for side panels."
+          showcases={[{
             code: OVERLAYS_CODE,
             children: (
               <TooltipProvider>
@@ -184,47 +194,27 @@ export function Storybook() {
                     <Button variant="outline">Hover me</Button>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Save your changes</p>
+                    <p>Helpful context here</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
             ),
-          }}
+          }]}
         />
 
         <CategoryBlock
-          title="Status & Feedback"
-          description="Communicate system state — badges for inline labels, skeletons for loading states, and EmptyState for zero-data screens."
-          components={['Badge', 'StatusBadge', 'PriorityBadge', 'Skeleton', 'EmptyState', 'Alert', 'InfoBanner', 'Progress', 'ProgressTracker']}
-          showcase={{
-            code: STATUS_CODE,
-            children: <Badge variant="solid" color="green">Active</Badge>,
-          }}
-        />
-
-        <CategoryBlock
-          title="Buttons & Links"
-          description="Interactive call-to-action primitives — Button with 8 variants and 3 sizes, and Link for in-flow text navigation."
-          components={['Button', 'Link', 'Toggle', 'ToggleGroup']}
-          showcase={{
-            code: BUTTONS_CODE,
-            children: <Button variant="outline">Learn more</Button>,
-          }}
-        />
-
-        <CategoryBlock
-          title="Typography"
-          description="Semantic text hierarchy — Heading (levels 1–6), Subheading, Text, and Strong for consistent type treatment across the product."
-          components={['Heading', 'Subheading', 'Text', 'Strong']}
-          showcase={{
-            code: TYPOGRAPHY_CODE,
+          title="Strata Components"
+          description="Domain-specific components built for the Strata platform — status badges, priority indicators, dealer-specific layouts, and other UI that encodes Strata business concepts directly into the component API."
+          showcases={[{
+            code: STRATA_CODE,
             children: (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <Heading level={2}>Design System Atlas</Heading>
-                <Text>Components built for consistency across Strata products.</Text>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
+                {BADGE_EXAMPLES.map(b => (
+                  <Badge key={b.label} variant={b.variant} color={b.color}>{b.label}</Badge>
+                ))}
               </div>
             ),
-          }}
+          }]}
         />
       </div>
     </div>
