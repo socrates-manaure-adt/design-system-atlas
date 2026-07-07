@@ -184,7 +184,7 @@ export function Storybook() {
 
         <CategoryBlock
           title="Overlays"
-          description="Components that float above page content to deliver contextual information or capture user decisions — tooltips for inline hints, dialogs for blocking actions, and drawers for side panels."
+          description="Components that float above page content to deliver contextual information or capture user decisions — tooltips for inline hints, dialogs for blocking actions, and drawers for side panels. Each overlay manages its own focus trap, keyboard dismissal, and accessibility attributes so you never need to wire those up manually. Use the DS compound component pattern rather than building a custom modal with a fixed overlay div."
           showcases={[{
             code: OVERLAYS_CODE,
             children: (
@@ -204,7 +204,7 @@ export function Storybook() {
 
         <CategoryBlock
           title="Strata Components"
-          description="Domain-specific components built for the Strata platform — status badges, priority indicators, dealer-specific layouts, and other UI that encodes Strata business concepts directly into the component API."
+          description="Domain-specific components built for the Strata platform — status badges, priority indicators, dealer-specific layouts, and other UI that encodes Strata business concepts directly into the component API. These go beyond general-purpose UI: they carry the semantic meaning of Strata domain objects such as deal status, user role, and workflow state. Use them instead of composing the same patterns from primitives in every feature."
           showcases={[{
             code: STRATA_CODE,
             children: (
