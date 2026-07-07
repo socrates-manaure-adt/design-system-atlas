@@ -1,15 +1,17 @@
-/* Tailwind v4 — scans both app source and DS compiled JS for class usage */
-@import 'tailwindcss';
+/* Wire dark: utilities to <html class="dark"> instead of OS prefers-color-scheme.
+   Re-declared here so atlas's Tailwind instance sees it unambiguously; the DS
+   canonical entrypoint also declares it, but belt-and-suspenders is correct here. */
+@custom-variant dark (&:is(.dark *));
+
+/* DS canonical entrypoint via package export — includes tailwindcss, Inter font,
+   tokens (light + dark), @custom-variant dark, and utility classes. */
+@import '@avantodev/strata-design-system/styles.css';
+
+/* Atlas source scan — Tailwind emits utilities for atlas app code and DS bundle. */
 @source '../src/**/*.{ts,tsx}';
 @source '../node_modules/@avantodev/strata-design-system/dist/index.js';
 
-/* DS design tokens — imported via relative path (package doesn't export deep CSS) */
-@import '../node_modules/@avantodev/strata-design-system/dist/styles/tokens/variables.css';
-@import '../node_modules/@avantodev/strata-design-system/dist/styles/tokens/variables-dark.css';
-@import '../node_modules/@avantodev/strata-design-system/dist/styles/tokens/theme-v4.css';
-@import '../node_modules/@avantodev/strata-design-system/dist/styles/utilities.css';
-
-/* Skeleton shimmer: freeze animation when user prefers reduced motion */
+/* Skeleton shimmer: freeze when user prefers reduced motion. */
 @media (prefers-reduced-motion: reduce) {
   .animate-pulse {
     animation: none;
