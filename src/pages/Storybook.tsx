@@ -9,6 +9,10 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
 } from '@avantodev/strata-design-system'
 import { ShowcaseBlock } from '../components/ShowcaseBlock'
 import { ComponentErrorBoundary } from '../components/ComponentErrorBoundary'
@@ -36,17 +40,33 @@ const BTN_VARIANTS = [
   'default', 'destructive', 'outline', 'secondary', 'ghost', 'link', 'brand', 'accent',
 ] as const
 
-const DATA_VIZ_CODE = `import { BarChart, LineChart } from '@avantodev/strata-design-system'
+const DATA_VIZ_CODE = `import {
+  Accordion, AccordionItem, AccordionTrigger, AccordionContent,
+} from '@avantodev/strata-design-system'
 
-<BarChart
-  data={[
-    { label: 'Jan', value: 420 },
-    { label: 'Feb', value: 380 },
-    { label: 'Mar', value: 510 },
-  ]}
-  xKey="label"
-  yKey="value"
-/>`
+<Accordion type="single" collapsible>
+  <AccordionItem value="q1">
+    <AccordionTrigger>What data sources does the DS support?</AccordionTrigger>
+    <AccordionContent>
+      The DS chart components accept any array of plain objects — pass
+      your data directly without a transformation layer.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="q2">
+    <AccordionTrigger>Can I override chart colors with tokens?</AccordionTrigger>
+    <AccordionContent>
+      Yes — chart series colors map to the semantic chart-1 through
+      chart-5 tokens so they respect the active theme automatically.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="q3">
+    <AccordionTrigger>Is recharts a peer dependency?</AccordionTrigger>
+    <AccordionContent>
+      Yes. Install recharts alongside the DS package — it is listed in
+      peerDependencies and must be present in your project.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>`
 
 const OVERLAYS_CODE = `<TooltipProvider>
   <Tooltip>
@@ -175,9 +195,29 @@ export function Storybook() {
           showcases={[{
             code: DATA_VIZ_CODE,
             children: (
-              <p style={{ fontSize: '14px', color: 'var(--muted)', fontStyle: 'italic' }}>
-                Chart components require a data source — see live examples in Storybook.
-              </p>
+              <Accordion type="single" collapsible style={{ width: '100%', maxWidth: '480px' }}>
+                <AccordionItem value="q1">
+                  <AccordionTrigger>What data sources does the DS support?</AccordionTrigger>
+                  <AccordionContent>
+                    The DS chart components accept any array of plain objects — pass
+                    your data directly without a transformation layer.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="q2">
+                  <AccordionTrigger>Can I override chart colors with tokens?</AccordionTrigger>
+                  <AccordionContent>
+                    Yes — chart series colors map to the semantic chart-1 through
+                    chart-5 tokens so they respect the active theme automatically.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="q3">
+                  <AccordionTrigger>Is recharts a peer dependency?</AccordionTrigger>
+                  <AccordionContent>
+                    Yes. Install recharts alongside the DS package — it is listed in
+                    peerDependencies and must be present in your project.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             ),
           }]}
         />
