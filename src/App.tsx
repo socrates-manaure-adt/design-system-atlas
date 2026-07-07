@@ -6,6 +6,7 @@ import { WhatIsDS } from './pages/WhatIsDS'
 import { Install } from './pages/Install'
 import { Usage } from './pages/Usage'
 import { Components } from './pages/Components'
+import { Storybook as StorybookPage } from './pages/Storybook'
 import { Stub } from './pages/Stub'
 import styles from './App.module.css'
 
@@ -19,7 +20,7 @@ function AppShell() {
         <Route path="/install" element={<Install />} />
         <Route path="/usage" element={<Usage />} />
         <Route path="/components" element={<Components />} />
-        <Route path="/storybook" element={<Stub title="Storybook" />} />
+        <Route path="/storybook" element={<StorybookPage />} />
         <Route path="/tokens" element={<Stub title="Tokens" />} />
         <Route path="/rules" element={<Stub title="Design Rules" />} />
       </Routes>
