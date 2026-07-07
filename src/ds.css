@@ -1,0 +1,10 @@
+/* Tailwind v4 — scans both app source and DS compiled JS for class usage */
+@import 'tailwindcss';
+@source '../src/**/*.{ts,tsx}';
+@source '../node_modules/@avantodev/strata-design-system/dist/index.js';
+
+/* DS design tokens — imported via relative path (package doesn't export deep CSS) */
+@import '../node_modules/@avantodev/strata-design-system/dist/styles/tokens/variables.css';
+@import '../node_modules/@avantodev/strata-design-system/dist/styles/tokens/variables-dark.css';
+@import '../node_modules/@avantodev/strata-design-system/dist/styles/tokens/theme-v4.css';
+@import '../node_modules/@avantodev/strata-design-system/dist/styles/utilities.css';

@@ -1,0 +1,8 @@
+.wrap {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.wrap pre {
+  margin: 0 !important;
+}
