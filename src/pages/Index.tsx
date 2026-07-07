@@ -22,12 +22,6 @@ const SECTIONS = [
     accentVar: '--exec',
   },
   {
-    title: 'Components',
-    description: 'Interactive catalog of every exported component — props, variants, and live examples from the design system.',
-    to: '/components',
-    accentVar: '--epic',
-  },
-  {
     title: 'Storybook',
     description: 'Embedded reference to the live Storybook deployment — stories for every component with controls and docs.',
     to: '/storybook',
