@@ -4,7 +4,20 @@ import { ShowcaseBlock } from '../components/ShowcaseBlock'
 import { PlaygroundBlock } from '../components/PlaygroundBlock'
 import styles from './WhatIsDS.module.css'
 
-const SHOWCASE_CODE = `<Button variant="outline">Cancel</Button>`
+const SHOWCASE_CODE = `import { Button } from '@avantodev/strata-design-system'
+
+<Button>default</Button>
+<Button variant="destructive">destructive</Button>
+<Button variant="outline">outline</Button>
+<Button variant="secondary">secondary</Button>
+<Button variant="ghost">ghost</Button>
+<Button variant="link">link</Button>
+<Button variant="brand">brand</Button>
+<Button variant="accent">accent</Button>`
+
+const BTN_VARIANTS = [
+  'default', 'destructive', 'outline', 'secondary', 'ghost', 'link', 'brand', 'accent',
+] as const
 
 export function WhatIsDS() {
   return (
@@ -35,13 +48,17 @@ export function WhatIsDS() {
           Showcase
         </h2>
         <p className={`${styles.body} reveal d2`}>
-          A <strong>Showcase</strong> displays a component in one fixed configuration. The rendered
-          result and its exact source code appear side-by-side. Props are not interactive — the
-          example is a canonical reference for a single valid usage.
+          A <strong>Showcase</strong> displays every variant and configuration of a component
+          side-by-side, so that you can see the full range of what a component offers at a glance.
+          It mirrors how Storybook presents components — one surface, all possibilities.
         </p>
         <div className="reveal d3">
           <ShowcaseBlock code={SHOWCASE_CODE}>
-            <Button variant="outline">Cancel</Button>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', alignItems: 'center' }}>
+              {BTN_VARIANTS.map(v => (
+                <Button key={v} variant={v}>{v}</Button>
+              ))}
+            </div>
           </ShowcaseBlock>
         </div>
       </section>
