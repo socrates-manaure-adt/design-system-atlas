@@ -23,12 +23,12 @@ Set `NODE_AUTH_TOKEN` to a GitHub Personal Access Token with `read:packages` sco
 Pushing any commit to `main` triggers the GitHub Actions workflow (`.github/workflows/deploy.yml`), which builds the app and deploys `dist/` to the `gh-pages` branch. The live site is available at:
 
 ```
-https://avantodev.github.io/design-system-atlas/
+https://socrates-manaure-adt.github.io/design-system-atlas/
 ```
 
 ### CI setup
 
-The workflow requires a `NODE_AUTH_TOKEN` secret in the repository settings. This token must be a GitHub Personal Access Token with `read:packages` scope, scoped to the `AvantoDev` org. To configure:
+The workflow requires a `NODE_AUTH_TOKEN` secret in the repository settings. This token must be a GitHub Personal Access Token with `read:packages` scope, with access to `@avantodev` packages on GitHub Package Registry. To configure:
 
 1. Go to **Settings → Secrets and variables → Actions** in the GitHub repo
 2. Add a secret named `NODE_AUTH_TOKEN` with a valid PAT value
