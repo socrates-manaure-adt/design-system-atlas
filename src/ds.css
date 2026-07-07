@@ -8,3 +8,10 @@
 @import '../node_modules/@avantodev/strata-design-system/dist/styles/tokens/variables-dark.css';
 @import '../node_modules/@avantodev/strata-design-system/dist/styles/tokens/theme-v4.css';
 @import '../node_modules/@avantodev/strata-design-system/dist/styles/utilities.css';
+
+/* Skeleton shimmer: freeze animation when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse {
+    animation: none;
+  }
+}

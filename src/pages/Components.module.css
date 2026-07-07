@@ -1,0 +1,84 @@
+.page {
+  padding: 48px 0 80px;
+}
+
+.back {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+
+.back:hover {
+  color: var(--text);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-top: 32px;
+  margin-bottom: 20px;
+}
+
+.lead {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 680px;
+}
+
+.section {
+  margin-top: 64px;
+  border-top: 1px solid var(--line);
+  padding-top: 40px;
+}
+
+.sectionHead {
+  margin-bottom: 28px;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+.sectionDesc {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.variantGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.skeletonGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subsectionLabel {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .variantGrid {
+    grid-template-columns: 1fr;
+  }
+}
